@@ -11,7 +11,10 @@ window.addEventListener("load", function () {
   waitForElement(".cky-consent-container", function () {
     const data = getCkyConsent();
     if (data.activeLaw === "ccpa") {
-     console.log("This is CCPA")
+     console.log("CCPA");
+    }
+    else {
+    console.log("GDPR"); 
     }
   });
 });
