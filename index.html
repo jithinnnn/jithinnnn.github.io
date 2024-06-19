@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
    <script id="cookieyes" type="text/javascript" src="https://mojoview.com/client_data/eb8a780380db5ac934f4464d/script.js"></script>
+    <script>
+var checktimeout = 0;
+window.addEventListener("load", function () {
+  waitForElement(".cky-consent-container", function () {
+    const data = getCkyConsent();
+    if (data.activeLaw === "ccpa") {
+     console.log("This is CCPA")
+    }
+  });
+});
+
+function waitForElement(selector, callback) {
+  const element = document.querySelector(selector);
+  if (element) {
+    return callback();
+  }
+  checktimeout++;
+  if (checktimeout < 120) {
+    setTimeout(function () {
+      waitForElement(selector, callback);
+    }, 500);
+  }
+}
+</script>
 </head>
 <body>
     <h3>Hello World</h3>
